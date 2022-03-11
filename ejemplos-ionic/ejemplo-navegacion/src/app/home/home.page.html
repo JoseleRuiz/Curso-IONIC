@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Usuarios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <!-- Directiva routerLink -> cambia la URL de la aplicación -->
+    <!-- <ion-item *ngFor="let usuario of listaUsuarios" routerLink="/usuario"> -->
+    <ion-item *ngFor="let usuario of listaUsuarios" [routerLink]="['/usuario', usuario.nombre]">
+      <ion-label>
+        <p>{{usuario.nombre | titlecase}} {{usuario.apellido | titlecase}}</p>
+        <p>{{usuario.precio | currency:simbolo | unidadPago:usuario.unidad}}</p>
+      </ion-label>
+      <ion-avatar slot="start">
+        <img [src]="usuario.imagen" alt="Imagen de {{usuario.nombre}}">
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="start">
+    <ion-fab-button routerLink="/recetas">
+      <ion-icon name="fast-food-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="center">
+    <ion-fab-button routerLink="/temas">
+      <ion-icon name="shirt-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/nuevo-usuario">
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
